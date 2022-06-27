@@ -37,12 +37,15 @@ import com.bd.projetbd.ServiceImpl.PartenaireServiceImpl;
 import com.bd.projetbd.ServiceImpl.PertesServiceImpl;
 import com.bd.projetbd.ServiceImpl.ProduitsServicesImpl;
 import com.bd.projetbd.entities.Bande;
+import com.bd.projetbd.entities.Client;
+import com.bd.projetbd.entities.Commande;
+import com.bd.projetbd.entities.Depense;
 import com.bd.projetbd.entities.Employe;
 import com.bd.projetbd.entities.Info;
 import com.bd.projetbd.entities.Partenaire;
 import com.bd.projetbd.entities.Pertes;
 import com.bd.projetbd.entities.Produits;
-import com.si.casdj.entity.Products;
+
 
 
 
@@ -90,7 +93,7 @@ public String register(Model model) {
 public String info(Model model) {
 	Info emp= new Info();
 	model.addAttribute("newInfo",emp);
-	return "newinfoPage";
+	return "newinfoPage";//pour l'ajout d'une info, les return ayant new sont pour la page d'ajout d'une entite
 }
 @GetMapping(value="/products/new")
 public String product(Model model) {
@@ -98,10 +101,34 @@ public String product(Model model) {
 	model.addAttribute("newProduct",emp);
 	return "newproductsPage";
 }
+@GetMapping(value="/orders/new")
+public String bandes(Model model) {
+	Commande emp= new Commande();
+	model.addAttribute("newCommande",emp);
+	return "newCommandePage";
+}
+@GetMapping(value="/depenses/new")
+public String depense(Model model) {
+	Depense emp= new Depense();
+	model.addAttribute("newDepense",emp);
+	return "newproductsPage";
+}
+@GetMapping(value="/clients/new")
+public String newClient(Model model) {
+	Client c= new Client();
+	model.addAttribute("newClient",c);
+	return"newClientPage";
+}
+
 @GetMapping(value="/productsPage")
 public String prodPage(Model model) {
 	model.addAttribute("productsPage",prodService.findAll());
 	return "productPage";
+}
+@GetMapping(value="/ordersPage")
+public String orderPage(Model model) {
+	model.addAttribute("ordersPage",cmdService.findAll());
+	return "orderPage";
 }
 @GetMapping(value="/infoPage")
 public String infoPage(Model model) {
@@ -117,6 +144,11 @@ public String pertePage(Model model) {
 public String depensePage(Model model) {
 	model.addAttribute("depensesPage", depenseService.findAll());
 	return "depensePage";
+}
+@GetMapping(value="/clientPage")
+public String clientPage(Model model) {
+	model.addAttribute("clientPage",clientService.findAll());
+	return "clientPage";
 }
 @GetMapping(value="/pertes/new")
 public String pertes(Model model) {
@@ -143,10 +175,15 @@ public String bande() {
 //}
 @PostMapping(value="register/save")
 public String saveNewAccount(@ModelAttribute("employe") Employe employe) {
-
+//     employe.setPassword(password);
 	emplService.saveEmploye(employe);
 
 	return "redirect:/login";
+}
+@PostMapping(value="/client/save")
+public String saveClient(@ModelAttribute("client") Client client) {
+	clientService.saveClient(client);
+	return "redirect:/clientPage";
 }
 @PostMapping(value="info/post")
 public String infoBande(@ModelAttribute("info")Info info) {
@@ -163,11 +200,11 @@ public String infoPertes(@ModelAttribute("pertes")Pertes pertes) {
 	perteService.savePertes(pertes);
 	return "redirect:/pertePage";
 }
-//@GetMapping(path="/productPic/{idProduct}",produces=MediaType.IMAGE_PNG_VALUE)
-//public byte[] getPic(@PathVariable("idProducts") Long id) throws Exception{
-//	Produits p=prodService.getByIdProduits(id);
-//	return Files.readAllBytes(Paths.get(System.getProperty("user.home")+"/casd/products/"+p.getNomImage()));
-//}
+@GetMapping("/products/editProducts/{id}")
+public String editProduct(@PathVariable long id,Model model) {
+	model.addAttribute("products",prodService.getByIdProduits(id));
+	return "editProducts";
+}
 @PostMapping("/editProducts/{id}")
 public String modifyProduct(@PathVariable long id,Model model,@ModelAttribute("products") Produits products) {
 	Produits existProduct= prodService.getByIdProduits(id);
@@ -181,52 +218,7 @@ public String modifyProduct(@PathVariable long id,Model model,@ModelAttribute("p
 	prodService.saveProduits(existProduct);
 	return "redirect:/productPage";		
 }
-@PostMapping("/editInfo/{id}")
-public String modifyInfo(@PathVariable long id,Model model,@ModelAttribute("info") Info info) {
-	Info existInfo= infoService.getByIdInfo(id);
-	existInfo.setIdInfo(id);
-	existInfo.setDateDeces(existInfo.getDateDeces());
-	existInfo.setNbreDeces(existInfo.getNbreDeces());
-	existInfo.setNbreProduit(existInfo.getNbreProduit());
-	infoService.saveInfo(existInfo);
-	return "redirect:/infoPage";		
-}
-//@GetMapping(value="/infoemploye")
-//public String infoEmploye(@RequestParam (required = false) String firstName,
-//								
-//								Model model) {
-//	Employe users = emplService.getNomEmploye(firstName);
-//	
-//	model.addAttribute("users", users);
-//	model.addAttribute("firstName", firstName);
-//	return "employeePage";
-//}
-//@GetMapping(value="/allemploye")
-//public String allEmployees(
-//								Model model) {
-//	List<Employe> users = emplService.findAll();
-//	
-//	model.addAttribute("users", users);
-//	return "employeesPage";
-//}
-//@GetMapping(value="/allpartenaire")
-//public String allPartenaires(
-//								Model model) {
-//	List<Partenaire> users = partService.findAll();
-//	
-//	model.addAttribute("users", users);
-//	return "partenairesPage";
-//}
-//@GetMapping(value="/infopatenaire")
-//public String infoPartenaire(@RequestParam (required = false) String firstName,
-//								
-//								Model model) {
-//	Partenaire users = partService.getNomPartenaire(firstName);
-//	
-//	model.addAttribute("users", users);
-//	model.addAttribute("firstName", firstName);
-//	return "partenairesPage";
-//}
+
 @GetMapping(value="/infobande")
 public String infoBande(@RequestParam (required = false) String nomBande,
 								
@@ -250,5 +242,10 @@ public String allBande(
 public String deleteAccount(@PathVariable(name="id") long id) {
 	emplService.deleteByIdEmploye(id);
 	return"logout.html";
+}
+@DeleteMapping("deleteclient/{id}")
+public String deleteClient(@PathVariable(name="id") long id) {
+	clientService.deleteById(id);
+	return "redirect:/clientPage";
 }
 }
