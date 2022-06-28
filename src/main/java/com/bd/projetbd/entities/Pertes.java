@@ -1,5 +1,7 @@
 package com.bd.projetbd.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +24,9 @@ public class Pertes {
 		this.typePerte = typePerte;
 		this.originePerte = originePerte;
 		this.quantite = quantite;
+	
 	}
+	
 	public Long getIdPerte() {
 		return idPerte;
 	}
@@ -50,7 +54,21 @@ public class Pertes {
 	private String typePerte;
 	private String originePerte;
 	private int quantite;
+	private LocalDate date=LocalDate.now();
 	
+	
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	public Bande getBandePerte() {
+		return bandePerte;
+	}
+	public void setBandePerte(Bande bandePerte) {
+		this.bandePerte = bandePerte;
+	}
 	@ManyToOne
 	private Bande bandePerte;
 }

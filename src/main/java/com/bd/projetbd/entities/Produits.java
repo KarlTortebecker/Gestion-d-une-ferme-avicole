@@ -2,6 +2,7 @@ package com.bd.projetbd.entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,14 +20,49 @@ public class Produits {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Produits(String typeProduits, String origine, int quantite, LocalDate date, double prixProduit) {
+    
+    
+	
+	public Produits(byte[] image, String nomImage, String typeProduits, String origine, int quantite, LocalDate date,
+			double prixProduit, String nomProduit) {
 		super();
+		this.image = image;
+		this.nomImage = nomImage;
 		this.typeProduits = typeProduits;
 		this.origine = origine;
 		this.quantite = quantite;
 		this.date = date;
 		this.prixProduit = prixProduit;
+		this.nomProduit = nomProduit;
 	}
+
+
+
+	@Column(name="image",length=Integer.MAX_VALUE,nullable=true)
+	private byte[] image;
+	
+	@Column(name="nomImage",length=Integer.MAX_VALUE,nullable=true)
+	private String nomImage;
+	
+	
+	
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public String getNomImage() {
+		return nomImage;
+	}
+
+	public void setNomImage(String nomImage) {
+		this.nomImage = nomImage;
+	}
+
 	public Long getIdProduits() {
 		return idProduits;
 	}
@@ -66,9 +102,17 @@ public class Produits {
 	private String typeProduits;
 	private String origine;
 	private int quantite;
-	private LocalDate date;
+	private LocalDate date=LocalDate.now();
 	private double prixProduit;
+	private String nomProduit;
 	
+	
+	public String getNomProduit() {
+		return nomProduit;
+	}
+	public void setNomProduit(String nomProduit) {
+		this.nomProduit = nomProduit;
+	}
 	@ManyToOne
 	private Bande bandeProduit;
 	
