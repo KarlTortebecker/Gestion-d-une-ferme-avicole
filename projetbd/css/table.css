@@ -1,0 +1,153 @@
+@import url(../css/style.css);
+/* @import url(	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css); */
+
+.home-section2{
+    position: relative;
+    bottom: 600px;
+    background: white;
+    position: relative;
+     min-height: 80vh;
+    width: calc(100% - 240px);
+    left: 240px;  
+    transition: all 0.5s ease;
+    margin-left: 20px;
+    margin-right: 50px;
+    
+
+}
+.sidebar.active ~ .home-section2{
+
+    width: calc(100% - 45px);
+    left: 45px;
+ }
+ /*******************STYLE TEXT**************************************/
+  
+ 
+ .home-section2 .panel1{
+   display: flex; 
+   border-bottom: 1px solid #333;
+   justify-content: space-between;
+ }
+
+.home-section2 .panel1 .text {
+     padding: 10px 40px;
+     display: flex;
+   
+     
+}
+.home-section2 .text h3{
+     padding: 5px 0;
+      margin-left: 13px; 
+    
+   }
+
+   .home-section2 .button .button1{
+
+      padding: 10px 15px;
+      background: rgb(24, 93, 24);
+      border: 1px solid rgb(24, 93, 24);
+   
+       margin-top: 10px;
+       cursor: pointer;
+   
+   }
+   .home-section2 .button .button1:hover{
+        background:rgb(35, 107, 17);
+        border: 1px solid rgb(35, 107, 17);
+        text-decoration: underline;
+   }
+   .home-section2 .button .button1 p{
+      color: white;
+   }
+
+   .home-section2 .button .icon{
+      background: white;
+      border: none;
+      width: 40px;
+      cursor: pointer;
+      font-size: 20px;   
+   
+   
+   }
+
+   .home-section2 .panel2 p{
+      padding: 10px 40px;
+      display: flex;
+    
+      
+ }
+
+ .home-section2 .panel3 p{
+   padding: 10px 40px;
+   display: flex;
+ 
+   
+}
+
+
+
+
+
+
+
+
+
+
+/********************STYLE DU TABLEAU 25%****************************/
+ .home-section2 .table1{
+    
+    
+    padding: 50px 40px;
+   
+ }
+
+ 
+
+ table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+   
+      
+  }
+
+   .home-section2 .table1 table th{
+   padding: 0 40px;
+  
+  }
+  
+
+
+  .home-section2 .table1 table,thead, th span{
+    font-weight: bold;
+    font-size: 13px;
+    
+     
+ }
+
+
+ .home-section2 .table1 table, .bodydy tr, th,td{
+    
+   text-align: center; 
+  
+} 
+
+.home-section2 .table1 table, th, img{
+
+   height: 110px;
+
+ }
+  
+
+ .home-section2 .table1 table thead th span i{
+     position: relative;
+     left: 40px;
+     color: rgb(112, 112, 87);
+     font-size: 20px;
+      top: 15px;
+ }
+   
+
+
+
+
+
