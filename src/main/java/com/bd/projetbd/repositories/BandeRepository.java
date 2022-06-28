@@ -10,9 +10,8 @@ import com.bd.projetbd.entities.Bande;
 @Repository
 public interface BandeRepository extends JpaRepository<Bande, Long> {
 	List<Bande> getByOrigine(String origine);
-
-	List<Bande> getByNomBande(String nomBande);
+	public List<Bande> getByTypePerte(String typePerte) ;
+//	List<Document> getByType(String type);
 //	 List<Document> getByTheme(String theme);
 	Bande getByIdBande(long idBande);
-	Bande findByNomBande(String nomBande);
 }

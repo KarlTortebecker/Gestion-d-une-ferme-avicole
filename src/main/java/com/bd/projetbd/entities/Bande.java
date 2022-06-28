@@ -12,9 +12,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Bande {
 
-	public Bande(String nomBande, String origine, int quantite) {
+	public Bande(String typePerte, String origine, int quantite) {
 		super();
-		this.nomBande = nomBande;
+		this.typePerte = typePerte;
 		this.origine = origine;
 		this.quantite = quantite;
 	}
@@ -22,7 +22,7 @@ public class Bande {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idBande;
 	
-	private String nomBande;
+	private String typePerte;
 	private String origine;
 	private int quantite;
 	public Long getIdBande() {
@@ -31,11 +31,11 @@ public class Bande {
 	public void setIdBande(Long idBande) {
 		this.idBande = idBande;
 	}
-	public String getNomBande() {
-		return nomBande;
+	public String getTypePerte() {
+		return typePerte;
 	}
-	public void setNomBande(String nomBande) {
-		this.nomBande = nomBande;
+	public void setTypePerte(String typePerte) {
+		this.typePerte = typePerte;
 	}
 	public String getOrigine() {
 		return origine;

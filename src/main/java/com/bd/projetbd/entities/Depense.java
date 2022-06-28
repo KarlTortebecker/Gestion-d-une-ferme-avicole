@@ -1,7 +1,5 @@
 package com.bd.projetbd.entities;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,24 +17,6 @@ public class Depense {
 	private int quantite;
 	
 	private double prixunit;
-     
-	private LocalDate date=LocalDate.now();
-	
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public Depense getBandeDepense() {
-		return bandeDepense;
-	}
-
-	public void setBandeDepense(Depense bandeDepense) {
-		this.bandeDepense = bandeDepense;
-	}
 
 	public Long getIdDepense() {
 		return idDepense;
@@ -84,6 +64,5 @@ public class Depense {
 	
 	@ManyToOne
 	private Depense bandeDepense;
-	
 	
 }

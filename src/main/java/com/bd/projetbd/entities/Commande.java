@@ -1,6 +1,5 @@
 package com.bd.projetbd.entities;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,17 +15,6 @@ public class Commande {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idCommande;
-	
-	private LocalDate date=LocalDate.now();
-			
-    
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
 
 	public Long getIdCommande() {
 		return idCommande;

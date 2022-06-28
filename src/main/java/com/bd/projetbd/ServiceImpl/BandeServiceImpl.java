@@ -39,7 +39,11 @@ public class BandeServiceImpl implements BandeService {
 		return this.bdRepo.getByOrigine(origine);
 	}
 
-
+	@Override
+	public List<Bande> getByTypePerte(String typePerte) {
+		// TODO Auto-generated method stub
+		return this.bdRepo.getByTypePerte(typePerte);
+	}
 
 	@Override
 	public void deleteById(long idBande) {
@@ -57,18 +61,6 @@ public class BandeServiceImpl implements BandeService {
 	public Bande getByIdBande(long idBande) {
 		// TODO Auto-generated method stub
 		return this.bdRepo.getByIdBande(idBande);
-	}
-
-	@Override
-	public List<Bande> getByNomBande(String nomBande) {
-		// TODO Auto-generated method stub
-		 return this.bdRepo.getByNomBande(nomBande);
-	}
-
-	@Override
-	public Bande getNomBande(String nomBande) {
-		// TODO Auto-generated method stub
-		return this.bdRepo.findByNomBande(nomBande);
 	}
 
 }

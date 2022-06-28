@@ -19,12 +19,11 @@ public class Employe {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Employe(String nomEmploye, String prenomEmploye,String password, int tel, String statut) {
+	public Employe(String nomEmploye, String prenomEmploye, int tel, String statut) {
 		super();
 		this.nomEmploye = nomEmploye;
 		this.prenomEmploye = prenomEmploye;
 		this.tel = tel;
-		this.password=password;
 		this.statut = statut;
 	}
 	public Long getIdEmploye() {
@@ -61,15 +60,7 @@ public class Employe {
 	private String prenomEmploye;
 	private int tel;
 	private String statut;
-	private String password;
 	
-	
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	@OneToMany(mappedBy="employeInfo")
 	private List<Info> infoEmploye;
 	@OneToMany(mappedBy="employeBande")
@@ -77,24 +68,4 @@ public class Employe {
 	
 	@OneToMany(mappedBy="employePart")
 	private List<Partenaire> partEmploye;
-
-	public List<Info> getInfoEmploye() {
-		return infoEmploye;
-	}
-	public void setInfoEmploye(List<Info> infoEmploye) {
-		this.infoEmploye = infoEmploye;
-	}
-	public List<Bande> getBandeEmploye() {
-		return bandeEmploye;
-	}
-	public void setBandeEmploye(List<Bande> bandeEmploye) {
-		this.bandeEmploye = bandeEmploye;
-	}
-	public List<Partenaire> getPartEmploye() {
-		return partEmploye;
-	}
-	public void setPartEmploye(List<Partenaire> partEmploye) {
-		this.partEmploye = partEmploye;
-	}
-	
 }

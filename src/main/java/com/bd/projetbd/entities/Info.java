@@ -19,15 +19,15 @@ public class Info {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Info(int nbreDeces, int nbreProduit) {
+	public Info(int nbreDeces, int nbreProduit, LocalDate dateDeces) {
 		super();
 		this.nbreDeces = nbreDeces;
 		this.nbreProduit = nbreProduit;
-		
+		this.dateDeces = dateDeces;
 	}
 	private int nbreDeces;
 	private int nbreProduit;
-	private LocalDate dateDeces=LocalDate.now();
+	private LocalDate dateDeces;
 	public Long getIdInfo() {
 		return idInfo;
 	}
